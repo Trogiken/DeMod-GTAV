@@ -24,35 +24,37 @@ while True:
 # Verify File Locations
 cwd = os.getcwd()
 app = f'{cwd}\\app'
-updater = f'{cwd}\\updater'
+update = f'{cwd}\\update'
 verify = True
 
-app_required = ['main', 'mode_edit', 'class_animation', 'class_threadloading']
+app_required = ['main.py', 'mode_edit.py', 'class_animation.py', 'class_threadloading.py']
 compare_app = []
+app_missing = []
 app_files = os.listdir(app)
 for file in app_files:
     if file in app_required:
         compare_app.append(file)
-if app_required != compare_app:  # If all required files aren't found
+if len(app_required) != len(compare_app):  # If all required files aren't found
     verify = False
-    for file in app_required:
-        if file in compare_app:
-            app_required.remove(file)  # Leave remaining files that haven't been found
-    print(f'Required files Missing from: {app}\nMissing Files [{app_required}]')
+    for f in app_required:
+        if f not in compare_app:
+            app_missing.append(f)
+    print(f'Required files Missing from: {app}\n{app_missing}')
 
-updater_required = ['updater']
-compare_updater = []
-updater_files = os.listdir(updater)
+update_required = ['updater.py']
+compare_update = []
+update_missing = []
+updater_files = os.listdir(update)
 for file in updater_files:
-    if file in updater_required:
-        compare_updater.append(file)
-if updater_required != compare_updater:  # If all required files aren't found
+    if file in update_required:
+        compare_update.append(file)
+if len(update_required) != len(compare_update):  # If all required files aren't found
     verify = False
-    for file in updater_required:
-        if file in compare_updater:
-            updater_required.remove(file)  # Leave remaining files that haven't been found
-    print(f'Required files Missing from: {updater}\nMissing Files [{updater_required}]')
+    for f in update_required:
+        if f not in compare_update:
+            update_missing.append(f)
+    print(f'Required files Missing from: {update}\n{update_missing}')
 
 if verify is False:  # If any of the required files are missing
-    input('Press ENTER to exit')
+    input('\nPress ENTER to exit')
     exit()
