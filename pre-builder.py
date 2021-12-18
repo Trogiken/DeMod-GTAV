@@ -1,5 +1,8 @@
 import os
+from shutil import rmtree
+cwd = os.getcwd()
 
+# Verify Pyinstaller is installed
 while True:
     installed = (os.system(f"pyinstaller"))
     os.system('cls')
@@ -22,7 +25,6 @@ while True:
         exit()
 
 # Verify File Locations
-cwd = os.getcwd()
 app = f'{cwd}\\app'
 update = f'{cwd}\\update'
 verify = True
@@ -57,4 +59,26 @@ if len(update_required) != len(compare_update):  # If all required files aren't 
 
 if verify is False:  # If any of the required files are missing
     input('\nPress ENTER to exit')
+    exit()
+
+
+# Create BUILD folders
+build_dir = f'{cwd}\\BUILD'
+app_dir = f'{build_dir}\\app'
+update_dir = f'{build_dir}\\update'
+misc_dir = f'{build_dir}\\__misc__'
+
+if os.path.exists(build_dir):  # Clear BUILD folder
+    try:
+        rmtree(build_dir)
+    except BaseException as rmerr:
+        input(f'Failed to clear the BUILD folder\nERROR: {rmerr}')
+        exit()
+try:
+    os.mkdir(build_dir)
+    os.mkdir(app_dir)
+    os.mkdir(update_dir)
+    os.mkdir(misc_dir)
+except BaseException as mkerr:
+    input(f'Failed to create BUILD folders\nERROR: {mkerr}')
     exit()
