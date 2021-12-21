@@ -3,6 +3,10 @@ A glorified control click delete quickly built up as a program out of the rage I
 
 Executable [download](https://github.com/Trogiken/DeMod-GTAV/releases/download/1.6.21/DeModGTAV.exe)
 
+### Installation
+1. Clone the repo
+3. From the repo directory in a terminal window, run "python builder.py" or "python3 builder.py"
+
 
 ## Developer
 Even though there is a wide range of problems with this program, don't make pull requests. Fork the repository if you wish to improve it.
