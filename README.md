@@ -9,6 +9,8 @@ Executable [download](https://github.com/Trogiken/DeMod-GTAV/releases/download/1
 
 
 ## Developer
+This Project has been discontinued
+
 Even though there is a wide range of problems with this program, don't make pull requests. Fork the repository if you wish to improve it.
 #### Some Suggestions for improvement
 * Optimize import usages
